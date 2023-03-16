@@ -50,7 +50,7 @@ class Ingp:
             [0, 1, 0],
         ])
         mesh.rotate(rotmat, center=(0, 0, 0))
-        o3d.io.write_triangle_mesh(str(fpath), mesh)
+        o3d.io.write_triangle_mesh(str(fpath), mesh, compressed=True)
 
     def export_point_cloud(self, fpath: Path, resolution: int, mesh_fpath: Path | None = None):
         if mesh_fpath is None:
@@ -63,7 +63,7 @@ class Ingp:
         pcd = o3d.geometry.PointCloud()
         pcd.points = o3d.utility.Vector3dVector(xyz)
         pcd.colors = o3d.utility.Vector3dVector(rgb)
-        o3d.io.write_point_cloud(str(fpath), pcd)
+        o3d.io.write_point_cloud(str(fpath), pcd, compressed=True)
 
 
 def main():
